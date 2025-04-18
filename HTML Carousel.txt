@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>360° Vehicle Carousel</title>
+  <link rel="stylesheet" href="carousel-final.css" />
+</head>
+<body>
+  <div class="carousel-wrapper">
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <!-- 10 Cards -->
+        <!-- Cards 34–52 -->
+        <!-- Replace placeholder images with your own -->
+        <!-- CARD START -->
+        <!-- CARD 34 to 52 with Lightbox Thumbs -->
+        <!-- Use loop or repeat in your dev env for efficiency -->
+        <!-- BEGIN CARD LOOP -->
+        <!-- Manually rendered below for clarity -->
+        <!-- EACH CARD BLOCK -->
+        
+        <!-- CARD 34 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>34 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <a href="https://lasvegaspartybus.com/contact-us" class="cta">BEST OFFER!</a>
+
+         <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- Repeat above for 36–52 -->
+        <!-- CARD 36 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>36 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 38 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>38 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 40 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>40 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 42 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>42 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 44 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>44 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 46 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>46 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 48 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>48 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 50 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>50 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+        <!-- CARD 52 -->
+        <div class="carousel-card">
+          <img src="van-main.jpg" />
+          <h3>52 Passenger Party Bus</h3>
+          <p>Perfect for groups, club transport</p>
+          <button class="cta">BEST OFFER!</button>
+          <div class="interior-lightbox-thumbs">
+            <img src="van1.jpg" data-full="van1-large.jpg" />
+            <img src="van2.jpg" data-full="van2-large.jpg" />
+            <img src="van3.jpg" data-full="van3-large.jpg" />
+            <img src="van4.jpg" data-full="van4-large.jpg" />
+          </div>
+          <a class="vehicle-info" href="#">Vehicle Info</a>
+          <div class="glow-offer">Free Glow Shirt for All Your Riders!</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="arrow-container">
+      <div id="arrow-left" class="arrow">&larr;</div>
+      <div id="arrow-right" class="arrow">&rarr;</div>
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox-overlay" class="lightbox-overlay">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Full View" />
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+  <script src="carousel-final.js"></script>
+
+  <!-- Lightbox Script -->
+  <script>
+    document.querySelectorAll('.interior-lightbox-thumbs img').forEach(img => {
+      img.addEventListener('click', () => {
+        const fullSrc = img.getAttribute('data-full');
+        document.getElementById('lightbox-img').src = fullSrc;
+        document.getElementById('lightbox-overlay').style.display = 'flex';
+      });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      document.getElementById('lightbox-overlay').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
