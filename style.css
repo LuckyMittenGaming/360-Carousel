@@ -285,45 +285,58 @@ body {
     transform: none; /* Reset any transforms */
   }
  
-
 @media (max-width: 480px) {
   .carousel-card {
     width: 180px;
     height: 380px;
     padding: 15px 8px;
-    position: static; /* Remove any positioning that might affect layout */
-    transform: none; /* Reset any transforms */
+    position: relative; /* Instead of static to keep alignment possible */
+    transform: none;
   }
-  
+
   .carousel-card h3 {
     font-size: 16px;
   }
-  
+
   .carousel-card p {
     font-size: 12px;
   }
-  
+
   .cta {
     padding: 12px 14px;
     font-size: 16px;
   }
-  
+
   .arrow-container {
-    gap: 80px;
-    bottom: 120px; /* Higher position for mobile */
-    width: 100%; /* Ensure full width for smaller screens */
-    justify-content: center; /* Center arrows horizontally */
-    position: static; /* Remove any positioning that might affect layout */
-    transform: none; /* Reset any transforms */
+    gap: 60px;
+    bottom: auto;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    transform: none;
   }
-  
+
   .arrow {
     font-size: 30px;
-    position: static; /* Remove any positioning that might affect layout */
-    transform: none; /* Reset any transforms */
+    position: relative;
+    transform: none;
   }
-  
 
+  .carousel-container {
+    height: auto;
+    perspective: none;
+    overflow-y: auto;
+    padding-bottom: 20px;
+  }
+
+  .carousel {
+    flex-direction: column;
+    height: auto;
+    transform-style: flat;
+    align-items: center;
+    justify-content: center;
+  }
+}
 .vehicle-info {
   color: #F700D8;
   text-decoration: none;
