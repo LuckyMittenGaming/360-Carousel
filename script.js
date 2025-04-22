@@ -1,9 +1,20 @@
 // Carousel Functionality
+let isAnimating = false;
 const carousel = document.getElementById("carousel");
 const cards = document.querySelectorAll(".carousel-card");
 const totalCards = cards.length;
-const radius = 600;
-let currentProgress = 0;
+const baseCards = 10;
+const baseRadius = 800;
+const maxRadius = 1400;
+
+// Dynamic radius calculation for better card spacing
+function getAdjustedRadius() {
+  if (totalCards <= baseCards) return baseRadius;
+  const visibleRange = Math.min(5, Math.floor (totalCards/3));
+  const extraCards = totalCards - baseCards;
+  const scaleFactor = 1 + (extraCards * 0.04);
+  return Math.min(baseRadius * scaleFactor, maxRadius);
+}
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -11,42 +22,68 @@ function clamp(value, min, max) {
 
 function setCardTransforms(progress) {
   currentProgress = progress;
+  const radius = getAdjustedRadius();
   const baseAngle = progress * 360;
+  const activeRange = Math.min (7, totalCards);
 
   cards.forEach((card, i) => {
     const cardAngle = i * (360 / totalCards);
-    let rotation = cardAngle - baseAngle;
+    let rotation = ((cardAngle - baseAngle + 180) % 360) - 180;
 
-    while (rotation > 180) rotation -= 360;
-    while (rotation < -180) rotation += 360;
+    // Normalize rotation to [-180, 180]
+    rotation = ((rotation + 180) % 360 + 360) % 360 - 180;
 
-    const clampedRotation = clamp(rotation, -90, 90);
+    const clampedRotation = Math.max(-90, Math.min(90, rotation));
     const distanceFromCenter = Math.abs(clampedRotation / 90);
 
-    const scale = 1 + (1 - distanceFromCenter) * 0.3;
-    const opacity = 1.1 - distanceFromCenter;
-    const zIndex = distanceFromCenter < 0.2 ? 8 : 1;
-    const blur = Math.min(20, distanceFromCenter * -4);
+    if (distanceFromCenter < 0.7) { // Only animate visible cards
+    const scale = 0.8 + (1 - distanceFromCenter) * 0.5;
+    const opacity = 0.3 + (1 - distanceFromCenter) * 0.7;
+    const zIndex = Math.round(100 * (1 - distanceFromCenter));
+    const blur = Math.min(10, distanceFromCenter * 15);
     
-    card.style.filter = `blur(${blur}px)`;
-
     gsap.set(card, {
       rotationY: clampedRotation,
       scale: scale,
       zIndex: zIndex,
       opacity: opacity,
-      transformOrigin: `50% 50% -${radius}px`
+      filter: `blur(${blur}px)`,
+      transformOrigin: `50% 50% -${radius}px`,
+      duration: 0.7,
+      ease: "power2.out"
     });
+  } else {
+    
+    // Hide non-visible cards
+      gsap.set(card, {
+        opacity: 0,
+        scale: 0.7,
+        zIndex: 0
+      });
+    }
   });
 }
 
+
 function snapToCard(index) {
-  const targetProgress = index / totalCards;
+  if (isAnimating) return; // Prevent interruptions
+  const currentIndex = Math.round(currentProgress * totalCards) % totalCards;
+  let delta = index - currentIndex;
+  
+  // Choose the shortest rotation direction
+  if (Math.abs(delta) > totalCards / 2) {
+    delta = delta > 0 ? delta - totalCards : delta + totalCards;
+  }
+  
+  const targetProgress = currentProgress + (delta / totalCards);
+  
   gsap.to({progress: currentProgress}, {
     progress: targetProgress,
-    duration: 0.8,
-    ease: "power3.out",
+    duration: 0.2,
+    ease: "power1.out",
     onUpdate: function() {
+      // Normalize progress to avoid floating point errors
+      this.targets()[0].progress = (this.targets()[0].progress + 1) % 1;
       setCardTransforms(this.targets()[0].progress);
     }
   });
@@ -137,14 +174,16 @@ document.addEventListener('DOMContentLoaded', () => {
   setCardTransforms(0);
   initLightbox();
   
-  // Arrow navigation
+  // Continuous loop navigation
   document.getElementById("arrow-left").addEventListener("click", () => {
-    const index = Math.round(currentProgress * totalCards) + 1;
-    snapToCard((index + totalCards) % totalCards);
+    // Move backward (previous card)
+    const targetProgress = (currentProgress - (1 / totalCards) + 1) % 1;
+    snapToCard(Math.round(targetProgress * totalCards));
   });
   
-  document.getElementById("arrow-right").addEventListener("click", () => {
-    const index = Math.round(currentProgress * totalCards) - 1;
-    snapToCard((index + totalCards) % totalCards);
+   document.getElementById("arrow-right").addEventListener("click", () => {
+    // Move forward (next card)
+    const targetProgress = (currentProgress + (1 / totalCards)) % 1;
+    snapToCard(Math.round(targetProgress * totalCards));
   });
 });

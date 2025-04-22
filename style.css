@@ -14,17 +14,19 @@ body {
 
 .carousel-wrapper {
   width: 100%;
-  height: 100%;
+  height: 110%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .carousel-container {
-  perspective: 2000px;
-  max-width: 1000px;
+  perspective: 2500px;
+  max-width: 1200px;
   width: 100%;
   height: 80%;
   position: relative;
@@ -32,6 +34,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .carousel {
@@ -47,14 +51,18 @@ body {
 .carousel-card {
   z-index: 10;
   position: absolute;
-  width: 240px;
-  height: 465px;
+  width: 220px;
+  height: auto;
+  min-height: 440px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
   background: #111;
   border-radius: 12px;
   box-shadow: 0 0 30px #f700d8;
   color: white;
   text-align: center;
   padding: 20px 10px;
+  padding-bottom: 20px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,7 +70,8 @@ body {
 
 .carousel-card h3 {
   margin: 0 0 0;
-  font-size: 18px;
+  font-size: 17px;
+  text-shadow: 2px 2px 2px #000000,2px 2px 2px #000000,2px 2px 2px #f700d8;
 }
 
 .carousel-card p {
@@ -188,66 +197,65 @@ body {
 }
 
 .glow-offer {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   color: #FFD700;
-  margin-top: 0px;
+  padding: 8px 0;
+  margin-top: auto;
   margin-bottom: 0px;
-  text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
+  text-shadow: 0 0 5px #FFD700, 0 0 8px #FFD700, 5px 5px 5px #000000;
 }
 
 .arrow-container {
-  position: absolute;
-  bottom: 2px;
-  left: 50.2%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 180px;
-  z-index: 9999;
-  pointer-events: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  z-index: 10;
 }
 
 .arrow {
-  font-size: 50px;
+  font-size: 38px;
   color: #f700d8;
   cursor: pointer;
-  padding: 0px 4px;
-  border-radius: 12px;
   background: rgba(0, 0, 0, 0.6);
   border: 2px solid #f700d8;
-  box-shadow: 0 0 2px #f700d8, 0 0 2px #f700d8;
-  transition: all 0.2s ease;
-  z-index: 9999;
-  position: relative;
-  box-shadow: 0px 0px 2px;
-              0px 0px 2px; 
+  border-radius: 50%;
+  padding: 10px 14px;
+  transition: transform 0.3s ease;
+  text-shadow: 0 0 5px #000000, 0 0 10px #000000;
 }
 
 .arrow:hover {
   background: #f700d8;
-  color: black;
+  color: #000;
   transform: scale(1.1);
-  box-shadow: 1px 1px 1px 1px;
+  text-shadow: 0 0 5px #f700db;
 }
 
 .cta {
-  padding: 8px 185px;
-  padding-left: 58px;
+  padding: 5px 172px;
+  padding-left: 46px;
   max-width: 0vw;
   font-size: 20px;
-  margin-bottom: vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
   white-space: nowrap;
   text-align: center;
   font-weight: bold;
-  color: #000000;
+  color: #ffffff;
   background-color: #d894eb;
   border: none;
   border-radius: 8px;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 2px 0 5px #f700d8, 0 0 5px #f700d8, 0 0 10px #f700d8;
-  animation: best-offer-glow 1.5s ease-in-out infinite alternate;
-  transition: transform 0.2s ease;
+  text-shadow: 2px 2px 2px #000000; 
+  animation: best-offer-glow 3.5s ease-in-out infinite alternate;
+  transition: transform 0.5s ease;
 }
 
 @keyframes glow {
@@ -259,37 +267,60 @@ body {
   }
 
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .carousel-card {
-    width: 200px;
-    height: 420px;
-    transform: none; /* Reset any transforms */
-  }
-  
-  .arrow-container {
-    gap: 120px;
-    bottom: 20px; /* Slightly higher on tablets */
-    position: static; /* Remove any positioning that might affect layout */
-    transform: none; /* Reset any transforms */
-  }
-  
-  .arrow {
-    font-size: 40px;
-    transform: none; /* Reset any transforms */
-     }
-  
-  .arrow {
-    font-size: 30px;
-    position: static; /* Remove any positioning that might affect layout */
-    transform: none; /* Reset any transforms */
-  }
- 
-@media (max-width: 480px) {
   .carousel-card {
     width: 180px;
     height: 380px;
-    padding: 15px 8px;
+    transform: none;
+    position: relative;
+  }
+
+  .arrow-container {
+  margin-top: 10px;
+  gap: 40px;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+}
+
+.arrow {
+  font-size: 30px;
+  padding: 8px 12px;
+  
+}
+  .arrow:active {
+  transform: scale(0.9); /* Visual feedback when clicked */
+}
+  
+  /* Disabled state during animation */
+.arrow.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+  .carousel-container {
+    height: auto;
+    perspective: 1800px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .carousel {
+    flex-direction: column;
+    height: auto;
+    transform-style: flat;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+ 
+@media (max-width: 480px) {
+  .carousel-card {
+    width: 160px;
+    height: 340px;
+    padding: 10px 8px;
     position: relative; /* Instead of static to keep alignment possible */
     transform: none;
   }
@@ -306,21 +337,19 @@ body {
     padding: 12px 14px;
     font-size: 16px;
   }
-
   .arrow-container {
-    gap: 60px;
-    bottom: auto;
-    width: 100%;
-    justify-content: center;
-    position: relative;
-    transform: none;
-  }
+  margin-top: 10px;
+  gap: 40px;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+}
 
-  .arrow {
-    font-size: 30px;
-    position: relative;
-    transform: none;
-  }
+.arrow {
+  font-size: 30px;
+  padding: 8px 12px;
+}
+  
 
   .carousel-container {
     height: auto;
@@ -337,18 +366,21 @@ body {
     justify-content: center;
   }
 }
+
+
 .vehicle-info {
   color: #F700D8;
   text-decoration: none;
   font-weight: bold;
   font-size: 14px;
-  margin: 5px 0;
+  margin: 4px 0;
   display: inline-block;
   transition: all 0.3s ease;
   text-transform: uppercase;
   position: relative;
   z-index: 10;
   transition: all 0.3s ease;
+  text-shadow: 2px 2px 2px #ffffff:
 }
 
 .vehicle-info:hover {
@@ -359,6 +391,7 @@ body {
   box-shadow: 
     0 0 10px rgba(247, 0, 216, 0.5);
   transform: scale(1.05); /* Optional: slight zoom */
+  text-shadow: 2px 2px 2px #ffffff:
   }
   
   .carousel-card {
@@ -370,6 +403,7 @@ body {
   position: relative; /* Critical for z-index */
   z-index: 10;
   color: #f700d8;
+  text-shadow: 2px 2px 2px #ffffff:
 }
 
 .interior-lightbox-thumbs, .glow-offer {
