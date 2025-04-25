@@ -416,4 +416,34 @@ body {
   position: relative;
   z-index: 1;
 }
-  }
+  @media (max-width: 768px) {
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+  .carousel-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  .carousel-card {
+    height: clamp(540px, 90vh, 700px); /* Adjust based on real content */
+    overflow: hidden;
+}
+
+  .arrow-container {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+}
+}
