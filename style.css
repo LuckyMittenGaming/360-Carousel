@@ -504,4 +504,23 @@ body {
     justify-content: center;
     padding-top: 10px;
   }
+          @media (max-width: 480px) {
+  .carousel-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 3vh; /* Pull the card upward into view */
+    box-sizing: border-box;
+  }
+
+  .carousel-card {
+    transform: scale(0.90);
+    transform-origin: top center;
+    margin-bottom: 0;
+  }
+
+  .arrow-container {
+    bottom: 12px; /* Slight adjustment if needed */
+  }
 }
