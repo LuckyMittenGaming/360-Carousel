@@ -491,4 +491,17 @@ body {
     justify-content: center;
     align-items: center;
   }
+        @media (max-width: 480px) {
+  .carousel-card {
+    transform: scale(0.88);
+    transform-origin: top center;
+  }
+
+  .carousel-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+  }
 }
