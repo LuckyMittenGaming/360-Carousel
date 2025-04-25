@@ -21,11 +21,11 @@ body {
   justify-content: center;
   flex-direction: column;
   padding-bottom: 0;
-  margin-bottom: 0;
+  margin-bottom: -60px;
 }
 
 .carousel-container {
-  perspective: 2500px;
+  perspective: 300px;
   max-width: 1200px;
   width: 100%;
   height: 80%;
@@ -69,14 +69,17 @@ body {
 }
 
 .carousel-card h3 {
+  font-family: 'Bebas Neue', sans-serif; /* Apply Bebas Neue */
+  color: #f700d8;
   margin: 0 0 0;
-  font-size: 17px;
+  font-size: 23px;
   text-shadow: 2px 2px 2px #000000,2px 2px 2px #000000,2px 2px 2px #f700d8;
+  line-height: 22px;
 }
 
 .carousel-card p {
   margin: 0 0 10px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* Enhanced Lightbox Styles */
@@ -237,25 +240,27 @@ body {
 }
 
 .cta {
-  padding: 5px 172px;
-  padding-left: 46px;
-  max-width: 0vw;
-  font-size: 20px;
+  padding: 4px 20px;
+  max-width: 174px;
+  width: 300px;
+  font-size: 28px;
   margin-top: 10px;
   margin-bottom: 10px;
   white-space: nowrap;
   text-align: center;
-  font-weight: bold;
+  font-weight: 900;
   color: #ffffff;
   background-color: #d894eb;
-  border: none;
+  border: solid;
   border-radius: 8px;
+  border-color: #f700d8;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 2px 0 5px #f700d8, 0 0 5px #f700d8, 0 0 10px #f700d8;
   text-shadow: 2px 2px 2px #000000; 
-  animation: best-offer-glow 3.5s ease-in-out infinite alternate;
-  transition: transform 0.5s ease;
+  animation: best-offer-glow 4.5s ease-in-out infinite alternate;
+  transition: transform 0.8s ease;
+  font-family: 'Bebas Neue', sans-serif; /* Apply Bebas Neue */
 }
 
 @keyframes glow {
@@ -313,7 +318,7 @@ body {
     align-items: center;
     justify-content: center;
   }
-}
+
 
  
 @media (max-width: 480px) {
@@ -356,7 +361,7 @@ body {
     perspective: none;
     overflow-y: auto;
     padding-bottom: 20px;
-  }
+}
 
   .carousel {
     flex-direction: column;
@@ -364,8 +369,8 @@ body {
     transform-style: flat;
     align-items: center;
     justify-content: center;
-  }
 }
+
 
 
 .vehicle-info {
@@ -377,10 +382,9 @@ body {
   display: inline-block;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  position: relative;
-  z-index: 10;
   transition: all 0.3s ease;
-  text-shadow: 2px 2px 2px #ffffff:
+  text-shadow: 2px 2px 2px #ffffff;
+  font-family: 'Bebas Neue', sans-serif !important; /* Apply Bebas Neue */
 }
 
 .vehicle-info:hover {
@@ -391,8 +395,9 @@ body {
   box-shadow: 
     0 0 10px rgba(247, 0, 216, 0.5);
   transform: scale(1.05); /* Optional: slight zoom */
-  text-shadow: 2px 2px 2px #ffffff:
-  }
+  text-shadow: 2px 2px 2px #ffffff;
+  font-family: 'Bebas Neue', sans-serif !important; /* Apply Bebas Neue */
+}
   
   .carousel-card {
   z-index: auto; /* Or 10 */
@@ -403,7 +408,8 @@ body {
   position: relative; /* Critical for z-index */
   z-index: 10;
   color: #f700d8;
-  text-shadow: 2px 2px 2px #ffffff:
+  text-shadow: 2px 2px 2px #ffffff;
+  font-family: 'Bebas Neue', sans-serif; /* Apply Bebas Neue */
 }
 
 .interior-lightbox-thumbs, .glow-offer {
