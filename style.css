@@ -478,4 +478,17 @@ body {
     padding: 0 20px;
     z-index: 10;
   }
+      @media (max-width: 768px) {
+  .carousel-card {
+    transform: scale(0.92);
+    transform-origin: top center;
+  }
+
+  .carousel-wrapper {
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
