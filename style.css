@@ -328,8 +328,9 @@ body {
 @media (max-width: 768px) {
   .carousel-card {
     width: 180px;
-    height: 280px;
-    transform: none;
+    height: 380px;
+    transform: scale(0.9);
+    transform-origin: center;
     overflow: hidden !important;  /* Blocks most scrolling */
     position: fixed;  /* Extra lockdown */
   }
@@ -424,10 +425,10 @@ body {
 @media (max-width: 480px) {
   .carousel-card {
     width: 160px;
-    height: 240px;
+    height: 340px;
     padding: 10px 8px;
     transform: scale(0.9);
-    transform-origin: top center;
+    transform-origin: center;
     overflow: hidden !important;  /* Blocks most scrolling */
     position: fixed;  /* Extra lockdown */
   }
