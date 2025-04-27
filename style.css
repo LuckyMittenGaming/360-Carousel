@@ -10,18 +10,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
- .mobile-carousel {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    display: flex;
-    overflow: hidden;
-}
-  .carousel-slide {
-    min-width: 100vw;
-    height: 100vh;
-    flex-shrink: 0;
+  overflow: hidden !important;  /* Blocks most scrolling */
+  position: fixed;  /* Extra lockdown */
 }
 
 .carousel-wrapper {
@@ -340,7 +330,8 @@ body {
     width: 180px;
     height: 380px;
     transform: none;
-    position: relative;
+    overflow: hidden !important;  /* Blocks most scrolling */
+    position: fixed;  /* Extra lockdown */
   }
 
   .arrow-container {
@@ -437,6 +428,8 @@ body {
     padding: 10px 8px;
     transform: scale(0.9);
     transform-origin: top center;
+    overflow: hidden !important;  /* Blocks most scrolling */
+    position: fixed;  /* Extra lockdown */
   }
 
   .carousel-wrapper {
