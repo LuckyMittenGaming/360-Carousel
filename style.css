@@ -271,7 +271,7 @@ body {
 
 .arrow {
   font-size: 18px;
-  margin-top: 245px;
+  margin-top: 240px;
   color: #f700d8;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
@@ -329,7 +329,6 @@ body {
     height: 380px;
     transform: none;
     position: relative;
-    justify-content: center;
   }
 
   .arrow-container {
