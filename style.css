@@ -247,7 +247,7 @@ body {
 /* ===== ARROW STYLES ===== */
 .arrow-container {
   position: absolute;
-  top: 61%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
   width: 320px;
@@ -271,12 +271,13 @@ body {
 
 .arrow {
   font-size: 18px;
+  margin-top: 200px;
   color: #f700d8;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
   border: 2px solid #f700d8;
   border-radius: 20%;
-  padding: 118px 0px;
+  padding: 0px 0px;
   transition: transform 0.3s ease;
   text-shadow: 0 0 5px #000000, 0 0 10px #000000;
 }
