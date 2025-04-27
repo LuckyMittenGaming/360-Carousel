@@ -328,7 +328,7 @@ body {
 @media (max-width: 768px) {
   .carousel-card {
     width: 180px;
-    height: 480px;
+    height: 280px;
     transform: none;
     overflow: hidden !important;  /* Blocks most scrolling */
     position: fixed;  /* Extra lockdown */
@@ -424,7 +424,7 @@ body {
 @media (max-width: 480px) {
   .carousel-card {
     width: 160px;
-    height: 440px;
+    height: 240px;
     padding: 10px 8px;
     transform: scale(0.9);
     transform-origin: top center;
