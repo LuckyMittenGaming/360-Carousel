@@ -155,7 +155,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: 90vw;
+  width: 100%;
+  max-width: 90vw;
+  position: relative;
+  margin: 0 auto;
 }
 
 .lightbox-arrow {
@@ -175,13 +178,19 @@ body {
 }
 
 .lightbox-arrow:hover {
+  position: static;
+  margin: 0 10px;
   background: #f700d8;
   transform: scale(1.1);
 }
 
 .lightbox-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  max-width: 80%;
+  max-width: calc 100% - 120px);
   text-align: center;
 }
 
@@ -241,7 +250,7 @@ body {
 
 .arrow-container {
   position: absolute;
-  top: 61%; /* Locks vertical position relative to full screen */
+  top: 62%; /* Locks vertical position relative to full screen */
   left: 50%;
   transform: translateX(-50%);
   width: 320px; /* Match center card width */
@@ -527,7 +536,7 @@ body {
 
   .arrow-container {
     position: absolute;
-    bottom: 10px;
+    bottom: 6px;
     left: 0;
     right: 0;
     width: 100%;
@@ -540,6 +549,28 @@ body {
     transform: scale(0.92);
     transform-origin: top center;
   }
+          /* Lightbox adjustments for mobile */
+  .lightbox-nav {
+    width: 100vw;
+    padding: 0 20px; /* Prevents arrows from touching screen edges */
+    box-sizing: border-box;
+  }
+
+  .lightbox-arrow {
+    position: static; /* Removes any absolute positioning */
+    margin: 0 5px; /* Reduces space between arrows & image */
+    width: 40px; /* Smaller arrows for mobile */
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .lightbox-content {
+    max-width: calc(100% - 90px); /* Adjusts for smaller arrows */
+  }
+
+  #lightbox-img {
+    max-width: 100%; /* Ensures image stays within viewport */
+  }
 
   .carousel-wrapper {
     overflow: hidden;
@@ -548,6 +579,7 @@ body {
     justify-content: center;
     align-items: center;
   }
+      }
         @media (max-width: 480px) {
   .carousel-card {
     transform: scale(0.88);
@@ -561,6 +593,29 @@ body {
     justify-content: center;
     padding-top: 10px;
   }
+            /* Lightbox adjustments for mobile */
+  .lightbox-nav {
+    width: 100vw;
+    padding: 0 20px; /* Prevents arrows from touching screen edges */
+    box-sizing: border-box;
+  }
+
+  .lightbox-arrow {
+    position: static; /* Removes any absolute positioning */
+    margin: 0 5px; /* Reduces space between arrows & image */
+    width: 40px; /* Smaller arrows for mobile */
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .lightbox-content {
+    max-width: calc(100% - 90px); /* Adjusts for smaller arrows */
+  }
+
+  #lightbox-img {
+    max-width: 100%; /* Ensures image stays within viewport */
+  }
+      }
           @media (max-width: 480px) {
   .carousel-wrapper {
     height: 100vh;
@@ -578,6 +633,29 @@ body {
   }
 
   .arrow-container {
-    bottom: 12px; /* Slight adjustment if needed */
+    bottom: 8px; /* Slight adjustment if needed */
+      /* Lightbox adjustments for mobile */
+            }
+  .lightbox-nav {
+    width: 100vw;
+    padding: 0 20px; /* Prevents arrows from touching screen edges */
+    box-sizing: border-box;
   }
-}
+
+  .lightbox-arrow {
+    position: static; /* Removes any absolute positioning */
+    margin: 0 5px; /* Reduces space between arrows & image */
+    width: 40px; /* Smaller arrows for mobile */
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .lightbox-content {
+    max-width: calc(100% - 90px); /* Adjusts for smaller arrows */
+  }
+
+  #lightbox-img {
+    max-width: 100%; /* Ensures image stays within viewport */
+  }
+  }
+
