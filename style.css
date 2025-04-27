@@ -10,8 +10,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden !important;  /* Blocks most scrolling */
-  position: fixed;  /* Extra lockdown */
 }
 
 .carousel-wrapper {
@@ -273,7 +271,7 @@ body {
 
 .arrow {
   font-size: 18px;
-  margin-top: 230px;
+  margin-top: 245px;
   color: #f700d8;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
@@ -329,10 +327,9 @@ body {
   .carousel-card {
     width: 180px;
     height: 380px;
-    transform: scale(0.9);
-    transform-origin: center;
-    overflow: hidden !important;  /* Blocks most scrolling */
-    position: fixed;  /* Extra lockdown */
+    transform: none;
+    position: relative;
+    justify-content: center;
   }
 
   .arrow-container {
@@ -428,9 +425,8 @@ body {
     height: 340px;
     padding: 10px 8px;
     transform: scale(0.9);
-    transform-origin: center;
-    overflow: hidden !important;  /* Blocks most scrolling */
-    position: fixed;  /* Extra lockdown */
+    transform-origin: top center;
+    justify-content: center;
   }
 
   .carousel-wrapper {
