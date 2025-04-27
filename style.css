@@ -504,7 +504,7 @@ body {
 
   .arrow-container {
     position: absolute;
-    bottom: 10px;
+    bottom: 6px;
     left: 0;
     right: 0;
     width: 100%;
@@ -536,7 +536,7 @@ body {
 
   .arrow-container {
     position: absolute;
-    bottom: 6px;
+    bottom: 4px;
     left: 0;
     right: 0;
     width: 100%;
@@ -633,7 +633,7 @@ body {
   }
 
   .arrow-container {
-    bottom: 8px; /* Slight adjustment if needed */
+    bottom: 6px; /* Slight adjustment if needed */
       /* Lightbox adjustments for mobile */
             }
   .lightbox-nav {
