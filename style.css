@@ -424,7 +424,7 @@ body {
 @media (max-width: 480px) {
   .carousel-card {
     width: 160px;
-    height: 340px;
+    height: 440px;
     padding: 10px 8px;
     transform: scale(0.9);
     transform-origin: top center;
