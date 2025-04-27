@@ -174,21 +174,22 @@ function handleKeyDown(e) {
   }
 }
 
-// Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
   setCardTransforms(0);
   initLightbox();
-  
-  // Continuous loop navigation
-  document.getElementById("arrow-left").addEventListener("click", () => {
-    // Move backward (previous card)
-    const targetProgress = (currentProgress - (1 / totalCards) + 1) % 1;
-    snapToCard(Math.round(targetProgress * totalCards));
-  });
-  
-   document.getElementById("arrow-right").addEventListener("click", () => {
-    // Move forward (next card)
-    const targetProgress = (currentProgress + (1 / totalCards)) % 1;
-    snapToCard(Math.round(targetProgress * totalCards));
-  });
+
+  const leftArrow = document.querySelector(".arrow-left");
+  const rightArrow = document.querySelector(".arrow-right");
+
+  if (leftArrow && rightArrow) {
+    leftArrow.addEventListener("click", () => {
+      const targetProgress = (currentProgress - (1 / totalCards) + 1) % 1;
+      snapToCard(Math.round(targetProgress * totalCards));
+    });
+
+    rightArrow.addEventListener("click", () => {
+      const targetProgress = (currentProgress + (1 / totalCards)) % 1;
+      snapToCard(Math.round(targetProgress * totalCards));
+    });
+  }
 });
