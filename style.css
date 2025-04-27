@@ -1,4 +1,4 @@
-/* Existing Carousel Styles */
+/* ===== MAIN CAROUSEL STYLES ===== */
 body {
   margin: 0;
   padding: 0;
@@ -62,14 +62,14 @@ body {
   color: white;
   text-align: center;
   padding: 20px 10px;
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .carousel-card h3 {
-  font-family: 'Bebas Neue', sans-serif; /* Apply Bebas Neue */
+  font-family: 'Bebas Neue', sans-serif;
   color: #f700d8;
   margin: 0 0 0;
   font-size: 23px;
@@ -82,10 +82,10 @@ body {
   font-size: 13px;
   text-shadow: 1px 1px 1px #000000, 1px 1px 1px #000000, 1px 1px 1px #000000;
 }
-/* Vehicle Info Link - Add this near your other carousel-card styles */
+
 .vehicle-info {
   display: block;
-  margin: -16px auto 0; /* Top margin pushes it up, auto centers */
+  margin: -16px auto 0;
   padding: 6px 12px;
   font-size: 19px;
   font-weight: bold;
@@ -101,7 +101,6 @@ body {
   width: fit-content;
   position: relative;
   z-index: 20;
-  text-shadow: 1px 1px 1px #000000, 1px 1px 1px #000000, 1px 1px 1px #ffffff;
 }
 
 .vehicle-info:hover {
@@ -112,13 +111,13 @@ body {
   box-shadow: 0 0 10px rgba(247, 0, 216, 0.8);
 }
 
-/* Enhanced Lightbox Styles */
+/* ===== LIGHTBOX STYLES ===== */
 .lightbox-overlay {
   display: none;
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100vw; 
+  width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.95);
   justify-content: center;
@@ -178,8 +177,6 @@ body {
 }
 
 .lightbox-arrow:hover {
-  position: static;
-  margin: 0 10px;
   background: #f700d8;
   transform: scale(1.1);
 }
@@ -190,7 +187,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  max-width: calc 100% - 120px);
+  max-width: calc(100% - 120px);
   text-align: center;
 }
 
@@ -214,7 +211,6 @@ body {
   font-weight: bold;
 }
 
-/* Thumbnail Styles */
 .interior-lightbox-thumbs {
   display: flex;
   flex-wrap: wrap;
@@ -248,40 +244,29 @@ body {
   text-shadow: 0 0 5px #FFD700, 0 0 8px #FFD700, 5px 5px 5px #000000;
 }
 
+/* ===== ARROW STYLES ===== */
 .arrow-container {
   position: absolute;
-  top: 62%; /* Locks vertical position relative to full screen */
+  top: 61%;
   left: 50%;
   transform: translateX(-50%);
-  width: 320px; /* Match center card width */
+  width: 320px;
   display: flex;
   justify-content: space-between;
   z-index: 15;
   pointer-events: all;
-
 }
 
 .arrow-container .arrow {
   font-size: 60px;
   font-weight: 900;
-  text-shadow:
-    1px 0 #f700d8,
-    0 1px #f700d8,
-    -1px 0 #f700d8,
-    0 -1px #f700d8,
-    0 0 8px #f700d8,
-    0 0 12px #f700d8;
+  text-shadow: 1px 0 #f700d8, 0 1px #f700d8, -1px 0 #f700d8, 0 -1px #f700d8, 0 0 8px #f700d8, 0 0 12px #f700d8;
   background: none;
   border: none;
   cursor: pointer;
   user-select: none;
   pointer-events: all;
   transition: transform 0.1s ease;
-}
-.arrow-container .arrow:hover {
-  transform: scale(1.4);
-  background: none;
-  pointer-events: all;
 }
 
 .arrow {
@@ -294,22 +279,16 @@ body {
   padding: 118px 0px;
   transition: transform 0.3s ease;
   text-shadow: 0 0 5px #000000, 0 0 10px #000000;
-  pointer-events: all;
 }
 
 .arrow-container .arrow:hover {
   background: none !important;
   color: #FFD700;
-  text-shadow:
-    0 0 8px #FFD700,
-    0 0 12px #FFD700,
-    0 0 16px #FFD700;
+  text-shadow: 0 0 8px #FFD700, 0 0 12px #FFD700, 0 0 16px #FFD700;
   transform: scale(1.4);
-  pointer-events: all;
-
-
 }
 
+/* ===== CTA BUTTON ===== */
 .cta {
   padding: 4px 20px;
   max-width: 174px;
@@ -324,25 +303,25 @@ body {
   background-color: #d894eb;
   border: solid;
   border-radius: 8px;
-  border-color: #f700d8;
+  border-color: #B070C4;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 2px 0 5px #f700d8, 0 0 5px #f700d8, 0 0 10px #f700d8;
-  text-shadow: 2px 2px 2px #000000; 
-  animation: best-offer-glow 4.5s ease-in-out infinite alternate;
+  text-shadow: 2px 2px 2px #000000;
+  animation: NA
   transition: transform 0.8s ease;
-  font-family: 'Bebas Neue', sans-serif; /* Apply Bebas Neue */
+  font-family: 'Bebas Neue', sans-serif;
 }
 
-@keyframes glow {
+@keyframes best-offer-glow {
   from {
-    box-shadow: 0 0 2px #D894EB, 0 0 6px #D894EB, 0 0 9px #D894EB;
+    box-shadow: 0 0 2px #D894EB, 0 0 2px #D894EB, 0 0 6px #D894EB;
   }
   to {
-    box-shadow: 0 0 10px #D894EB, 0 0 20px #D894EB, 0 0 30px #D894EB;
+    box-shadow: 0 0 5px #D894EB, 0 0 10px #D894EB, 0 0 15px #D894EB;
   }
 
-
+/* ===== MOBILE STYLES ===== */
 @media (max-width: 768px) {
   .carousel-card {
     width: 180px;
@@ -352,28 +331,22 @@ body {
   }
 
   .arrow-container {
-  margin-top: 10px;
-  gap: 40px;
-  position: relative;
-  justify-content: center;
-  width: 100%;
-}
+    margin-top: 10px;
+    gap: 40px;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+  }
 
-.arrow {
-  font-size: 30px;
-  padding: 8px 12px;
+  .arrow {
+    font-size: 30px;
+    padding: 8px 12px;
+  }
   
-}
   .arrow:active {
-  transform: scale(0.9); /* Visual feedback when clicked */
-}
+    transform: scale(0.9);
+  }
   
-  /* Disabled state during animation */
-.arrow.disabled {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
   .carousel-container {
     height: auto;
     perspective: 1800px;
@@ -390,99 +363,29 @@ body {
     justify-content: center;
   }
 
-
- 
-@media (max-width: 480px) {
-  .carousel-card {
-    width: 160px;
-    height: 340px;
-    padding: 10px 8px;
-    position: relative; /* Instead of static to keep alignment possible */
-    transform: none;
+  /* Lightbox mobile adjustments */
+  .lightbox-nav {
+    width: 100vw;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
-  .carousel-card h3 {
-    font-size: 16px;
+  .lightbox-arrow {
+    position: static;
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
   }
 
-  .carousel-card p {
-    font-size: 12px;
+  .lightbox-content {
+    max-width: calc(100% - 90px);
   }
 
-  .cta {
-    padding: 12px 14px;
-    font-size: 16px;
+  #lightbox-img {
+    max-width: 100%;
   }
-  .arrow-container {
-  margin-top: 10px;
-  gap: 44px;
-  position: relative;
-  justify-content: center;
-  width: 100%;
-}
 
-.arrow {
-  font-size: 30px;
-  padding: 8px 12px;
-}
-  
-
-  .carousel-container {
-    height: auto;
-    perspective: none;
-    overflow-y: auto;
-    padding-bottom: 20px;
-}
-
-  .carousel {
-    flex-direction: column;
-    height: auto;
-    transform-style: flat;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.vehicle-info {
-  position: relative;
-  display: inline-block;
-  margin-top: 10px;       /* Push it UP away from bottom */
-  margin-bottom: 10px;    /* Keep a gap above arrows */
-  font-size: 14px;
-  font-weight: bold;
-  color: #FFFFFF;
-  text-decoration: none;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 2px #ffffff;
-  font-family: 'Bebas Neue', sans-serif;
-  transition: transform 0.3s ease;
-  z-index: 10;
-}
-
-
-.vehicle-info:hover {
-  color: #FFFFFF;
-  text-shadow: 
-    0 0 5px #f700d8, 
-    0 0 15px #f700d8;
-  box-shadow: 
-    0 0 10px rgba(247, 0, 216, 0.5);
-  transform: scale(1.05); /* Optional: slight zoom */
-  text-shadow: 2px 2px 2px #ffffff;
-  font-family: 'Bebas Neue', sans-serif !important; /* Apply Bebas Neue */
-}
-  
-  .carousel-card {
-  z-index: auto; /* Or 10 */
-  position: relative;
-}
-
-
-.interior-lightbox-thumbs, .glow-offer {
-  position: relative;
-  z-index: 1;
-}
-  @media (max-width: 768px) {
   body, html {
     margin: 0;
     padding: 0;
@@ -498,7 +401,7 @@ body {
   }
 
   .carousel-card {
-    height: clamp(540px, 90vh, 700px); /* Adjust based on real content */
+    height: clamp(540px, 90vh, 700px);
     overflow: hidden;
   }
 
@@ -512,150 +415,35 @@ body {
     padding: 0 20px;
     z-index: 10;
   }
-    @media (max-width: 768px) {
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100dvh; /* Dynamic viewport height for mobile */
-    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .carousel-card {
+    width: 160px;
+    height: 340px;
+    padding: 10px 8px;
+    transform: scale(0.9);
+    transform-origin: top center;
   }
 
   .carousel-wrapper {
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .carousel-card {
-    height: clamp(540px, 95dvh, 700px); /* Adjust as needed */
-    overflow: hidden;
+    padding-top: 3vh;
   }
 
   .arrow-container {
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 10;
-  }
-      @media (max-width: 768px) {
-  .carousel-card {
-    transform: scale(0.92);
-    transform-origin: top center;
-  }
-          /* Lightbox adjustments for mobile */
-  .lightbox-nav {
-    width: 100vw;
-    padding: 0 20px; /* Prevents arrows from touching screen edges */
-    box-sizing: border-box;
+    bottom: 6px;
   }
 
-  .lightbox-arrow {
-    position: static; /* Removes any absolute positioning */
-    margin: 0 5px; /* Reduces space between arrows & image */
-    width: 40px; /* Smaller arrows for mobile */
-    height: 40px;
-    font-size: 24px;
+  .cta {
+    padding: 12px 14px;
+    font-size: 16px;
   }
 
-  .lightbox-content {
-    max-width: calc(100% - 90px); /* Adjusts for smaller arrows */
+  .carousel-card h3 {
+    font-size: 16px;
   }
 
-  #lightbox-img {
-    max-width: 100%; /* Ensures image stays within viewport */
+  .carousel-card p {
+    font-size: 12px;
   }
-
-  .carousel-wrapper {
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-      }
-        @media (max-width: 480px) {
-  .carousel-card {
-    transform: scale(0.88);
-    transform-origin: top center;
-  }
-
-  .carousel-wrapper {
-    height: 100vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 10px;
-  }
-            /* Lightbox adjustments for mobile */
-  .lightbox-nav {
-    width: 100vw;
-    padding: 0 20px; /* Prevents arrows from touching screen edges */
-    box-sizing: border-box;
-  }
-
-  .lightbox-arrow {
-    position: static; /* Removes any absolute positioning */
-    margin: 0 5px; /* Reduces space between arrows & image */
-    width: 40px; /* Smaller arrows for mobile */
-    height: 40px;
-    font-size: 24px;
-  }
-
-  .lightbox-content {
-    max-width: calc(100% - 90px); /* Adjusts for smaller arrows */
-  }
-
-  #lightbox-img {
-    max-width: 100%; /* Ensures image stays within viewport */
-  }
-      }
-          @media (max-width: 480px) {
-  .carousel-wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 3vh; /* Pull the card upward into view */
-    box-sizing: border-box;
-  }
-
-  .carousel-card {
-    transform: scale(0.90);
-    transform-origin: top center;
-    margin-bottom: 0;
-  }
-
-  .arrow-container {
-    bottom: 6px; /* Slight adjustment if needed */
-      /* Lightbox adjustments for mobile */
-            }
-  .lightbox-nav {
-    width: 100vw;
-    padding: 0 20px; /* Prevents arrows from touching screen edges */
-    box-sizing: border-box;
-  }
-
-  .lightbox-arrow {
-    position: static; /* Removes any absolute positioning */
-    margin: 0 5px; /* Reduces space between arrows & image */
-    width: 40px; /* Smaller arrows for mobile */
-    height: 40px;
-    font-size: 24px;
-  }
-
-  .lightbox-content {
-    max-width: calc(100% - 90px); /* Adjusts for smaller arrows */
-  }
-
-  #lightbox-img {
-    max-width: 100%; /* Ensures image stays within viewport */
-  }
-  }
-
+}
