@@ -114,6 +114,27 @@ function initLightbox() {
       // Now show the lightbox
       document.getElementById('lightbox-overlay').style.display = 'flex';
       document.body.style.overflow = 'hidden';
+    
+    // ===== ADD HAMMER.JS PINCH-ZOOM HERE =====
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.style.transformOrigin = 'center center'; // Reset transform origin
+      
+      const hammer = new Hammer(lightboxImg);
+      hammer.get('pinch').set({ enable: true });
+      hammer.get('pan').set({ enable: true });
+
+      let currentScale = 1;
+      hammer.on('pinch pinchmove', (e) => {
+        currentScale = Math.max(1, e.scale);
+        lightboxImg.style.transform = `scale(${currentScale})`;
+      });
+
+      // Double-tap to reset zoom
+      hammer.on('doubletap', () => {
+        currentScale = currentScale === 1 ? 2 : 1;
+        lightboxImg.style.transform = `scale(${currentScale})`;
+      });
+      // ===== END OF PINCH-ZOOM CODE =====
     });
   });
 
