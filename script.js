@@ -4,6 +4,18 @@ let currentProgress = 0;
 const carousel = document.getElementById("carousel");
 const cards = document.querySelectorAll(".carousel-card");
 const totalCards = cards.length;
+
+// NEW FUNCTION ADDED HERE
+function centerActiveCard() {
+  const activeIndex = Math.round(currentProgress * totalCards) % totalCards;
+  const activeCard = cards[activeIndex];
+  
+  gsap.to(activeCard, {
+    y: -10, // Slight upward shift for visibility
+    duration: 0.3
+  });
+}
+
 const baseCards = 10;
 const baseRadius = 800;
 const maxRadius = 1400;
@@ -51,7 +63,7 @@ function animateToCard(targetIndex, duration = 0.5) {
   const startProgress = currentProgress;
   const endProgress = (targetIndex / totalCards) % 1;
   
-  // Calculate shortest path
+    // Calculate shortest path
   let delta = endProgress - startProgress;
   if (Math.abs(delta) > 0.5) {
     delta = delta > 0 ? delta - 1 : delta + 1;
@@ -68,6 +80,7 @@ function animateToCard(targetIndex, duration = 0.5) {
     onComplete: () => {
       // Normalize progress after animation
       currentProgress = (currentProgress + 1) % 1;
+      centerActiveCard(); // ADDED THIS LINE
       isAnimating = false;
     }
   });
@@ -197,6 +210,7 @@ function handleKeyDown(e) {
 
 document.addEventListener('DOMContentLoaded', () => {
   setCardTransforms(0);
+  centerActiveCard();
   initLightbox();
 
   const leftArrow = document.querySelector(".arrow-left");
