@@ -1,230 +1,183 @@
-// Carousel Functionality
+// carousel.js
+
+// ---- State & Elements ----
 let isAnimating = false;
 let currentProgress = 0;
 const carousel = document.getElementById("carousel");
-const cards = document.querySelectorAll(".carousel-card");
+const cards = Array.from(document.querySelectorAll(".carousel-card"));
 const totalCards = cards.length;
 
-// NEW FUNCTION ADDED HERE
+const baseCards   = 10;
+const baseRadius  = 800;
+const maxRadius   = 1400;
+
+// ---- Helper: Slightly lift the active card ----
 function centerActiveCard() {
   const activeIndex = Math.round(currentProgress * totalCards) % totalCards;
-  const activeCard = cards[activeIndex];
-  
+  const activeCard  = cards[activeIndex];
   gsap.to(activeCard, {
-    y: -10, // Slight upward shift for visibility
+    y:  -10,
     duration: 0.3
   });
 }
 
-const baseCards = 10;
-const baseRadius = 800;
-const maxRadius = 1400;
-
-// Dynamic radius calculation for better card spacing
+// ---- Helper: Dynamic radius based on card count ----
 function getAdjustedRadius() {
   if (totalCards <= baseCards) return baseRadius;
-  const extraCards = totalCards - baseCards;
-  const scaleFactor = 1 + (extraCards * 0.04);
+  const extraCards  = totalCards - baseCards;
+  const scaleFactor = 1 + extraCards * 0.04;
   return Math.min(baseRadius * scaleFactor, maxRadius);
 }
 
+// ---- Core: Position & style each card ----
 function setCardTransforms(progress) {
-  const radius = getAdjustedRadius();
+  const radius    = getAdjustedRadius();
   const baseAngle = progress * 360;
 
   cards.forEach((card, i) => {
+    // Calculate normalized rotation
     const cardAngle = i * (360 / totalCards);
-    let rotation = ((cardAngle - baseAngle + 180) % 360) - 180;
-    
-    // Normalize rotation to [-180, 180]
-    rotation = ((rotation + 180) % 360 + 360) % 360 - 180;
+    let rotation    = ((cardAngle - baseAngle + 180) % 360) - 180;
+    rotation        = ((rotation + 180) % 360 + 360) % 360 - 180;
 
-    const distanceFromCenter = Math.abs(rotation / 90);
-    const scale = 0.8 + (1 - distanceFromCenter) * 0.5;
-    const opacity = 0.3 + (1 - distanceFromCenter) * 0.7;
-    const zIndex = Math.round(100 * (1 - distanceFromCenter));
-    const blur = Math.min(10, distanceFromCenter * 15);
-    
+    // Depth-based scale & opacity
+    const norm    = Math.abs(rotation / 90);
+    const scale   = 0.8 + (1 - norm) * 0.5;
+    const opacity = 0.3 + (1 - norm) * 0.7;
+    const zIndex  = Math.round(100 * (1 - norm));
+
+    // **Combined transform** for GPU-only work
+    const transform = `
+      rotateY(${rotation}deg)
+      translateZ(${radius}px)
+      scale(${scale})
+    `.trim();
+
     gsap.set(card, {
-      rotationY: rotation,
-      scale: scale,
-      zIndex: zIndex,
-      opacity: opacity,
-      filter: `blur(${blur}px)`,
-      transformOrigin: `50% 50% -${radius}px`
+      transform,
+      opacity,
+      zIndex
     });
   });
 }
 
-function animateToCard(targetIndex, duration = 0.5) {
+// ---- Core: Animate to a given card index ----
+function animateToCard(targetIndex, duration = 0.6) {
   if (isAnimating) return;
   isAnimating = true;
-  
-  const startProgress = currentProgress;
-  const endProgress = (targetIndex / totalCards) % 1;
-  
-    // Calculate shortest path
-  let delta = endProgress - startProgress;
-  if (Math.abs(delta) > 0.5) {
-    delta = delta > 0 ? delta - 1 : delta + 1;
-  }
-  
-  gsap.to({progress: startProgress}, {
-    progress: startProgress + delta,
-    duration: duration,
-    ease: "power2.out",
-    onUpdate: function() {
-      currentProgress = this.targets()[0].progress;
+
+  const start = currentProgress;
+  let end     = (targetIndex / totalCards) % 1;
+  let delta   = end - start;
+  if (Math.abs(delta) > 0.5) delta += delta > 0 ? -1 : 1;
+
+  gsap.to({ p: start }, {
+    p:     start + delta,
+    duration,
+    // ← linear, perfectly even motion
+    ease:  "none",
+    onUpdate() {
+      currentProgress = this.targets()[0].p;
       setCardTransforms(currentProgress);
     },
-    onComplete: () => {
-      // Normalize progress after animation
-      currentProgress = (currentProgress + 1) % 1;
-      centerActiveCard(); // ADDED THIS LINE
+    onComplete() {
+      currentProgress = (currentProgress % 1 + 1) % 1;
+      centerActiveCard();
       isAnimating = false;
     }
   });
 }
 
-// Initialize everything
-document.addEventListener('DOMContentLoaded', () => {
+// ---- Init: wire up arrows & lightbox ----
+function initCarousel() {
   setCardTransforms(0);
+  centerActiveCard();
   initLightbox();
-  
-  // Arrow navigation
+
   document.getElementById("arrow-left").addEventListener("click", () => {
-    const currentIndex = Math.round(currentProgress * totalCards) % totalCards;
-    const targetIndex = (currentIndex - 1 + totalCards) % totalCards;
-    animateToCard(targetIndex);
+    const idx = Math.round(currentProgress * totalCards) % totalCards;
+    animateToCard((idx - 1 + totalCards) % totalCards);
   });
-  
   document.getElementById("arrow-right").addEventListener("click", () => {
-    const currentIndex = Math.round(currentProgress * totalCards) % totalCards;
-    const targetIndex = (currentIndex + 1) % totalCards;
-    animateToCard(targetIndex);
+    const idx = Math.round(currentProgress * totalCards) % totalCards;
+    animateToCard((idx + 1) % totalCards);
   });
-});
+}
 
-// Keep the rest of your lightbox code the same...
+document.addEventListener("DOMContentLoaded", initCarousel);
 
-// Enhanced Lightbox Functionality
+// ---- Enhanced Lightbox Functionality (unchanged) ----
 let currentImageIndex = 0;
-let currentGallery = [];
+let currentGallery    = [];
 
 function initLightbox() {
-  document.querySelectorAll('.interior-lightbox-thumbs img').forEach((img) => {
+  document.querySelectorAll('.interior-lightbox-thumbs img').forEach(img => {
     img.addEventListener('click', function() {
-      const card = this.closest('.carousel-card');
+      const card   = this.closest('.carousel-card');
       const thumbs = card.querySelectorAll('.interior-lightbox-thumbs img');
-      
-      // Build gallery array and get current index
-      currentGallery = Array.from(thumbs).map(img => img.dataset.full);
+
+      currentGallery    = Array.from(thumbs).map(img => img.dataset.full);
       currentImageIndex = Array.from(thumbs).indexOf(this);
-      
-      // Update lightbox content BEFORE showing it
       updateLightboxImage();
-      
-      // Now show the lightbox
+
       document.getElementById('lightbox-overlay').style.display = 'flex';
       document.body.style.overflow = 'hidden';
-    
-    // ===== ADD HAMMER.JS PINCH-ZOOM HERE =====
+
       const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.style.transformOrigin = 'center center'; // Reset transform origin
-      
+      lightboxImg.style.transformOrigin = 'center center';
       const hammer = new Hammer(lightboxImg);
       hammer.get('pinch').set({ enable: true });
       hammer.get('pan').set({ enable: true });
 
       let currentScale = 1;
-      hammer.on('pinch pinchmove', (e) => {
+      hammer.on('pinch pinchmove', e => {
         currentScale = Math.max(1, e.scale);
         lightboxImg.style.transform = `scale(${currentScale})`;
       });
-
-      // Double-tap to reset zoom
       hammer.on('doubletap', () => {
         currentScale = currentScale === 1 ? 2 : 1;
         lightboxImg.style.transform = `scale(${currentScale})`;
       });
-      // ===== END OF PINCH-ZOOM CODE =====
     });
   });
 
   document.getElementById('lightbox-prev').addEventListener('click', prevImage);
   document.getElementById('lightbox-next').addEventListener('click', nextImage);
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-  
   document.addEventListener('keydown', handleKeyDown);
 }
 
 function updateLightboxImage() {
   const lightboxImg = document.getElementById('lightbox-img');
-  lightboxImg.src = currentGallery[currentImageIndex];
-  document.querySelector('.image-counter').textContent = 
+  lightboxImg.src   = currentGallery[currentImageIndex];
+  document.querySelector('.image-counter').textContent =
     `${currentImageIndex + 1}/${currentGallery.length}`;
-  
-  // Preload adjacent images
   preloadImage(currentImageIndex - 1);
   preloadImage(currentImageIndex + 1);
 }
 
-function preloadImage(index) {
-  if (index >= 0 && index < currentGallery.length) {
+function preloadImage(idx) {
+  if (idx >= 0 && idx < currentGallery.length) {
     const img = new Image();
-    img.src = currentGallery[index];
+    img.src   = currentGallery[idx];
   }
 }
-
 function prevImage() {
   currentImageIndex = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
   updateLightboxImage();
 }
-
 function nextImage() {
   currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
   updateLightboxImage();
 }
-
 function closeLightbox() {
   document.getElementById('lightbox-overlay').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
-
 function handleKeyDown(e) {
-  const lightbox = document.getElementById('lightbox-overlay');
-  if (lightbox.style.display !== 'flex') return;
-  
-  switch(e.key) {
-    case 'Escape':
-      closeLightbox();
-      break;
-    case 'ArrowLeft':
-      prevImage();
-      break;
-    case 'ArrowRight':
-      nextImage();
-      break;
-  }
+  const overlay = document.getElementById('lightbox-overlay');
+  if (overlay.style.display !== 'flex') return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') prevImage();
+  if (e.key === 'ArrowRight') nextImage();
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  setCardTransforms(0);
-  centerActiveCard();
-  initLightbox();
-
-  const leftArrow = document.querySelector(".arrow-left");
-  const rightArrow = document.querySelector(".arrow-right");
-
-  if (leftArrow && rightArrow) {
-    leftArrow.addEventListener("click", () => {
-      const targetProgress = (currentProgress - (1 / totalCards) + 1) % 1;
-      snapToCard(Math.round(targetProgress * totalCards));
-    });
-
-    rightArrow.addEventListener("click", () => {
-      const targetProgress = (currentProgress + (1 / totalCards)) % 1;
-      snapToCard(Math.round(targetProgress * totalCards));
-    });
-  }
-});
